@@ -1,0 +1,38 @@
+{
+  "name": "maujadiapa",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "devDependencies": {
+    "autoprefixer": "^6.3.6",
+    "clean-css": "^3.4.12",
+    "node-sass": "^3.3.3",
+    "nodemon": "^1.9.1",
+    "postcss-cli": "^2.5.2",
+    "uglify": "^0.1.5",
+    "uglify-js": "^2.6.2"
+  },
+  "scripts": {
+    "build-css": "node-sass scss/app.scss scss/app.css",
+    "post-css": "postcss --use autoprefixer scss/app.css -d css/",
+    "watch-css": "nodemon -e scss -x \"npm run build-css && npm run post-css\"",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "mincss": "cleancss css/app.css -o css/app.min.css",
+    "minjs": "uglify -s js/app.js -o js/app.min.js",
+    "min-all": "npm run mincss; npm run minjs;"
+  },
+  "keywords": [
+    "maujadiapa",
+    "binus"
+  ],
+  "author": "herrucules",
+  "license": "ISC",
+  "dependencies": {
+    "fullpage.js": "^2.8.9",
+    "grunt": "^1.0.1",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-uglify": "^1.0.1"
+  }
+}
