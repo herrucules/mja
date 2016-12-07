@@ -290,6 +290,11 @@
             content: '';
             margin: 0;
             line-height: 0; } }
+  #characters #result .background-result,
+  #fullpage #result .background-result {
+    position: absolute;
+    top: 0;
+    left: 0; }
   #characters #result .btn,
   #fullpage #result .btn {
     box-shadow: 0 0 10px -3px #777; }
@@ -448,7 +453,8 @@
       margin-top: 0; } }
   #characters #result .img,
   #fullpage #result .img {
-    height: 500px; }
+    height: 500px;
+    position: relative; }
   #characters #result h4,
   #fullpage #result h4 {
     font-weight: 300;

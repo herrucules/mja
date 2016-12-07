@@ -305,6 +305,11 @@ $orange: #f49f34;
         }
     }
     #result {
+        .background-result {
+            position: absolute;
+            top:0;
+            left:0;
+        }
         .btn {
             box-shadow: 0 0 10px -3px #777;
         }
@@ -467,6 +472,7 @@ $orange: #f49f34;
         }
         .img {
             height: 500px;
+            position:relative;
         }
         h4 {
             font-weight: 300;

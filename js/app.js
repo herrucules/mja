@@ -25,7 +25,9 @@ $(function() {
     sliderJurusan: $('#slider-jurusan'),
     professionTitle: $('.profession-title'),
     facultyTitle: $('#faculty-title'),
-    facultyDescription: $('#faculty-description')
+    facultyDescription: $('#faculty-description'),
+    professionAvatar: $('.avatar-result'),
+    professionBackground: $('.background-result')
   };
 
   tes = app;
@@ -110,17 +112,17 @@ $(function() {
     ];
 
     this.professions = [
-                        {title: 'Advokat', imgName: 'vector-job-list-advokat', faculty: 'fh'},
-                        {title: 'Arsitek', imgName: 'vector-job-list-arsitek', faculty: 'feg'},
-                        {title: 'Creativepreneur', imgName: 'vector-job-list-creativeprenuer', faculty: 'sod'},
-                        {title: 'Diplomat', imgName: 'vector-job-list-diplomat', faculty: 'fh'},
-                        {title: 'Engineering Manager', imgName: 'vector-job-list-engineer-manager', faculty: 'feg' },
-                        {title: 'Entrepreneur', imgName: 'vector-job-list-entreprenuer', faculty: 'sobm'},
-                        {title: 'IT Consultant', imgName: 'vector-job-list-it-consultant', faculty: 'sois'},                     
-                        {title: 'Manager Operasional', imgName: 'vector-job-list-manajemen-operasional', faculty: 'feg'},
-                        {title: 'Public Relation', imgName: 'vector-job-list-public-relation', faculty: 'fec'},                     
-                        {title: 'Teknopreneur', imgName: 'vector-job-list-teknopreneur', faculty: 'socs'},
-                        {title: 'Trader', imgName: 'vector-job-list-trader2', faculty: 'fec'}
+                        {title: 'Advokat', resultImg: 'result-advocat', avatarImgName: 'vector-job-list-advokat', faculty: 'fh'},
+                        {title: 'Arsitek', resultImg: 'result-arsitek', avatarImgName: 'vector-job-list-arsitek', faculty: 'feg'},
+                        {title: 'Creativepreneur', resultImg: 'result-creativepreneur', avatarImgName: 'vector-job-list-creativeprenuer', faculty: 'sod'},
+                        {title: 'Diplomat', resultImg: 'result-diplomat', avatarImgName: 'vector-job-list-diplomat', faculty: 'fh'},
+                        {title: 'Engineering Manager', resultImg: 'result-engineer', avatarImgName: 'vector-job-list-engineer-manager', faculty: 'feg' },
+                        {title: 'Entrepreneur', resultImg: 'result-entrepreneur', avatarImgName: 'vector-job-list-entreprenuer', faculty: 'sobm'},
+                        {title: 'IT Consultant', resultImg: 'result-it-consultant', avatarImgName: 'vector-job-list-it-consultant', faculty: 'sois'},                     
+                        {title: 'Manager Operasional', resultImg: 'result-manajemen-operasional', avatarImgName: 'vector-job-list-manajemen-operasional', faculty: 'feg'},
+                        {title: 'Public Relation', resultImg: 'result-public-relation', avatarImgName: 'vector-job-list-public-relation', faculty: 'fec'},                     
+                        {title: 'Teknopreneur', resultImg: 'result-teknopreneur', avatarImgName: 'vector-job-list-teknopreneur', faculty: 'socs'},
+                        {title: 'Trader', resultImg: 'result-trader', avatarImgName: 'vector-job-list-trader2', faculty: 'fec'}
                       ];
     // end ajax call
 
@@ -144,8 +146,8 @@ $(function() {
       {src:'images/sma-perempuan.svg', type: createjs.LoadQueue.IMAGE}
     ];
     for (var i=0; i<app.professions.length; i++) {
-      manifests.push({src:'images/'+app.professions[i].imgName+'-co.svg', type: createjs.LoadQueue.IMAGE});      
-      manifests.push({src:'images/'+app.professions[i].imgName+'-ce.svg', type: createjs.LoadQueue.IMAGE});      
+      manifests.push({src:'images/'+app.professions[i].avatarImgName+'-co.svg', type: createjs.LoadQueue.IMAGE});      
+      manifests.push({src:'images/'+app.professions[i].avatarImgName+'-ce.svg', type: createjs.LoadQueue.IMAGE});      
     }
 
     app.preload.loadManifest(manifests);        
@@ -183,9 +185,9 @@ $(function() {
     this.scrollImg('sma-laki-laki', 'sma-perempuan')
   };
 
-  app.repositionImg = function () {
+  app.repositionProfessionScroller = function () {
     var w = $(window);
-    // console.log('repositionImg');
+    // console.log('repositionProfessionScroller');
     var marginTop = '15%';
     this.windowHeight = $('.fp-section').height();    
     if (w.width() < w.height()) {
@@ -196,6 +198,14 @@ $(function() {
     this.rightCard.find('img').css('margin-top', marginTop);
     this.leftCard.children('div').css('height', this.windowHeight);
     this.rightCard.children('div').css('height', this.windowHeight);
+  };
+
+  app.repositionProfessionBGResult = function () {
+    var width = this.professionBackground.parent().width();
+    var bg = this.professionBackground;
+    var bgWidth = 842; //bg.width()
+    var left = ( width - bgWidth ) / 2;
+    bg.css('left', left);
   };
 
   app.scrollImg = function(leftImg, rightImg) {
@@ -282,8 +292,8 @@ $(function() {
     try {
       // todo +gender
       var canScroll = this.scrollImg( 
-                        this.professions[this.currentProfessionIndex+2].imgName + (app.userProfile.gender == 'laki-laki' ? '-co' : '-ce'), 
-                        this.professions[this.currentProfessionIndex+3].imgName + (app.userProfile.gender == 'laki-laki' ?'-co' : '-ce')  
+                        this.professions[this.currentProfessionIndex+2].avatarImgName + (app.userProfile.gender == 'laki-laki' ? '-co' : '-ce'), 
+                        this.professions[this.currentProfessionIndex+3].avatarImgName + (app.userProfile.gender == 'laki-laki' ?'-co' : '-ce')  
                       );
 
       if (canScroll) {      
@@ -307,8 +317,8 @@ $(function() {
   app.prevProfession = function () {  
     try {
       var canScroll = this.scrollImg( 
-                        this.professions[this.currentProfessionIndex-2].imgName + (app.userProfile.gender == 'laki-laki' ? '-co' : '-ce'), 
-                        this.professions[this.currentProfessionIndex-1].imgName + (app.userProfile.gender == 'laki-laki' ?'-co' : '-ce')  
+                        this.professions[this.currentProfessionIndex-2].avatarImgName + (app.userProfile.gender == 'laki-laki' ? '-co' : '-ce'), 
+                        this.professions[this.currentProfessionIndex-1].avatarImgName + (app.userProfile.gender == 'laki-laki' ?'-co' : '-ce')  
                       );
 
       if (canScroll) {      
@@ -343,6 +353,16 @@ $(function() {
     this.facultyTitle.text(faculty.name);
     this.professionTitle.text(this.selectedProfession.title);
     this.facultyDescription.html(faculty.description);
+
+    var gender = this.userProfile.gender == 'laki-laki' ? 'co':'ce';
+    this.professionBackground.attr('src', 'images/'+this.selectedProfession.resultImg+'-'+gender+'.svg');
+    this.professionBackground.off('load');
+    this.professionBackground.on('load', function() {
+      TweenLite.from(app.professionBackground, 0.5, {y:-1000});
+    });
+    
+    app.repositionProfessionBGResult();
+    resizeResultAvatarContainer();
 
     this.sliderJurusan.find('li').remove();
     var ul = this.sliderJurusan.children('ul');
@@ -445,12 +465,15 @@ $(function() {
     scrollOverflow: true,
     afterRender: function() {
       setTimeout(function() {
-        app.repositionImg();
+        app.repositionProfessionScroller();
+        app.repositionProfessionBGResult();
       }, 0);
     },
     afterResize: function() {
-      app.repositionImg();
+      app.repositionProfessionScroller();
+      app.repositionProfessionBGResult();
       reloadSliderJurusan();
+      resizeResultAvatarContainer();
     }
   }); // end initfullpage
   $.fn.fullpage.setAllowScrolling(false); // disable scroll
@@ -529,6 +552,15 @@ $(function() {
 
   function reloadSliderJurusan() {
     app.sliderJurusan.sly('reload');
+  }
+
+  function resizeResultAvatarContainer() {
+    if ($(window).width() <= 768) return;
+    var textContentHeight = $('.text-content').parent().height();
+    var selectedProfessionDiv = $('#selectedProfessionDiv .img');
+    if (textContentHeight != selectedProfessionDiv.height()) {
+      selectedProfessionDiv.css('height', textContentHeight);
+    }
   }
 
   $('#btn-choose-another-profession').on('click', function () {
