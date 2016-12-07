@@ -17,6 +17,16 @@ $orange: #f49f34;
   height:100%;
   z-index:10;
   background: $blue;
+    display:table;
+  div {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+  }
+  img {
+    width: 10%;
+    height:10%;
+  }
 }
 
 #characters,

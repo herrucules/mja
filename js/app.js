@@ -356,6 +356,7 @@ $(function() {
 
     var gender = this.userProfile.gender == 'laki-laki' ? 'co':'ce';
     this.professionBackground.attr('src', 'images/'+this.selectedProfession.resultImg+'-'+gender+'.svg');
+    this.professionBackground.attr('alt', this.selectProfession.title);
     this.professionBackground.off('load');
     this.professionBackground.on('load', function() {
       TweenLite.from(app.professionBackground, 0.5, {y:-1000});
