@@ -37,6 +37,7 @@ $(function() {
   app.handlePreloadComplete = function () {    
     $('#preloader').fadeOut();
     $('#characters, #fullpage').removeClass('hide');    
+    setTimeout(app.switchToStudent.bind(app), 300);
   };
   app.preload.on('complete', app.handlePreloadComplete);
 
@@ -354,6 +355,8 @@ $(function() {
     this.professionTitle.text(this.selectedProfession.title);
     this.facultyDescription.html(faculty.description);
 
+    $('.profession-title-with-name').text(this.userProfile.name);
+
     var gender = this.userProfile.gender == 'laki-laki' ? 'co':'ce';
     this.professionBackground.attr('src', 'images/'+this.selectedProfession.resultImg+'-'+gender+'.svg');
     this.professionBackground.attr('alt', this.selectProfession.title);
@@ -523,6 +526,12 @@ $(function() {
     $.fn.fullpage.moveSectionDown();
   });
 
+  $('#change-profile').on('click', function() {
+    app.characterContainer.css('top',0);
+    app.switchToStudent();
+    $.fn.fullpage.silentMoveTo(1, 0); // change profile
+  });
+
   $('#form-kuliah-gratis').on('focusin', 'input', function () {
     var input = $(this);
     var divInput = input.parent();
@@ -548,7 +557,8 @@ $(function() {
     prevPage: $('.jurusan-prev'),
     nextPage: $('.jurusan-next'),
     speed: 300,
-    mouseDragging: true
+    mouseDragging: true,
+    touchDragging: true
   });
 
   function reloadSliderJurusan() {

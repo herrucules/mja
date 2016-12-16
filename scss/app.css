@@ -230,6 +230,10 @@
     #characters .jumbotron .error,
     #fullpage .jumbotron .error {
       color: #dc4d47; }
+    #characters .jumbotron .img-responsive,
+    #fullpage .jumbotron .img-responsive {
+      margin-right: auto;
+      margin-left: auto; }
   #characters #profession .btn,
   #fullpage #profession .btn {
     box-shadow: 0 0 10px -3px #777;
@@ -317,6 +321,29 @@
     background-color: #008ed3;
     color: #fff;
     padding-top: 60px; }
+    #characters #result .kuliah-gratis.home,
+    #fullpage #result .kuliah-gratis.home {
+      background-image: none;
+      padding-top: 0; }
+      #characters #result .kuliah-gratis.home::before,
+      #fullpage #result .kuliah-gratis.home::before {
+        content: ' ';
+        display: block;
+        background: url(../images/separator-curve-up.svg) no-repeat bottom center;
+        background-size: 100%;
+        height: 30px;
+        width: 100%;
+        background-color: #f1f1f1;
+        margin-bottom: 30px; }
+      #characters #result .kuliah-gratis.home::after,
+      #fullpage #result .kuliah-gratis.home::after {
+        background: url(../images/separator-curve.svg) no-repeat top center;
+        content: ' ';
+        display: block;
+        background-size: 100%;
+        height: 30px;
+        width: 100%;
+        background-color: #e2e2e2; }
     #characters #result .kuliah-gratis h1,
     #fullpage #result .kuliah-gratis h1 {
       font-size: 2.75em;
@@ -521,6 +548,33 @@
     background: #f9f9f9;
     margin-top: 25px;
     margin-bottom: 25px; }
+    #characters #result .frame#slider-alumni,
+    #fullpage #result .frame#slider-alumni {
+      margin: 0 0 30px 0;
+      background-color: #f1f1f1;
+      height: 300px; }
+      #characters #result .frame#slider-alumni .single,
+      #fullpage #result .frame#slider-alumni .single {
+        width: 100%;
+        margin: 0;
+        background-color: transparent;
+        border: none; }
+        #characters #result .frame#slider-alumni .single::before,
+        #fullpage #result .frame#slider-alumni .single::before {
+          display: none; }
+        #characters #result .frame#slider-alumni .single img,
+        #fullpage #result .frame#slider-alumni .single img {
+          box-shadow: 0 0 6px 0px #777;
+          margin-left: auto;
+          margin-right: auto; }
+      #characters #result .frame#slider-alumni .profile,
+      #fullpage #result .frame#slider-alumni .profile {
+        padding-top: 20px; }
+        @media only screen and (max-width: 768px) {
+          #characters #result .frame#slider-alumni .profile,
+          #fullpage #result .frame#slider-alumni .profile {
+            padding-left: 30px;
+            padding-right: 30px; } }
     #characters #result .frame .slideee,
     #fullpage #result .frame .slideee {
       margin: 0;
@@ -539,7 +593,8 @@
         border-left: 1px solid #ccc;
         border-right: 1px solid #ccc;
         border-top: 5px solid;
-        border-bottom: 5px solid; }
+        border-bottom: 5px solid;
+        display: table; }
         #characters #result .frame .slideee li::before,
         #fullpage #result .frame .slideee li::before {
           content: ' ';
@@ -564,11 +619,13 @@
           text-align: left;
           position: relative;
           margin: 0;
-          height: 100%; }
+          /*height:100%;*/
+          display: table-cell;
+          vertical-align: middle; }
           #characters #result .frame .slideee li h5 a,
           #fullpage #result .frame .slideee li h5 a {
             display: block;
-            height: 100%;
+            /*height: 100%;*/
             padding: 30px 20px;
             color: #5e5e5e;
             text-decoration: none; }
@@ -628,3 +685,104 @@
         #fullpage #result .frame .slideee .orange::before {
           border-left-color: #f49f34;
           border-right-color: #f49f34; }
+
+#top-menu {
+  min-height: 80px;
+  background: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  padding-left: 20px;
+  padding-right: 20px;
+  border: none;
+  display: none; }
+  #top-menu .navbar-brand {
+    height: auto; }
+  #top-menu #logo {
+    width: 163px; }
+  #top-menu .navbar-collapse a {
+    padding-top: 30px;
+    padding-bottom: 30px; }
+  #top-menu .navbar-collapse.in a, #top-menu .navbar-collapse.collapsing a {
+    padding-top: 15px;
+    padding-bottom: 15px; }
+  #top-menu a {
+    color: #22C6C7;
+    text-transform: uppercase;
+    padding-top: 20px;
+    padding-bottom: 20px; }
+
+.alumni {
+  background: #f1f1f1;
+  padding-top: 100px; }
+
+#konsultasi {
+  background: #e2e2e2;
+  padding: 50px 10px; }
+  #konsultasi li {
+    display: table;
+    float: left;
+    width: 20%;
+    padding: 20px;
+    height: 127px; }
+  #konsultasi a {
+    background: #fff;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    color: #5e5e5e; }
+  @media only screen and (max-width: 768px) {
+    #konsultasi li {
+      float: none;
+      margin-left: auto;
+      margin-right: auto;
+      width: 127px;
+      height: 127px; }
+    #konsultasi a {
+      height: 100%; } }
+
+#news-event {
+  background: #f1f1f1;
+  padding-top: 50px;
+  padding-bottom: 50px; }
+  #news-event > .col-sm-6 {
+    padding-left: 30px !important;
+    padding-right: 30px !important; }
+  #news-event .col-xs-7 {
+    padding: 12px 20px !important; }
+  #news-event li {
+    background: #fff;
+    border: 1px solid #ccc;
+    margin-top: 20px;
+    margin-bottom: 20px; }
+  #news-event a, #news-event span {
+    color: #5e5e5e;
+    display: block; }
+  #news-event .news-date {
+    font-size: .75em;
+    margin-bottom: 24px; }
+  #news-event a {
+    font-size: 1.125em; }
+  #news-event .view-all {
+    margin-top: 40px;
+    display: block; }
+  #news-event .day, #news-event .month, #news-event .year {
+    color: #fff; }
+  #news-event .day {
+    font-size: 2.875em;
+    font-weight: 700px; }
+  #news-event .month {
+    font-size: 1em;
+    margin-top: 11px; }
+  #news-event .year {
+    font-size: 0.875em; }
+  #news-event .event-date {
+    background: #f49f34;
+    padding-top: 40px;
+    padding-bottom: 40px; }
+
+#footer-home {
+  background: #414042;
+  min-height: 230px; }
