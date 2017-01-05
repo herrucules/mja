@@ -310,9 +310,19 @@
     position: absolute;
     top: 0;
     left: 0; }
+  #characters #result .faculty-description,
+  #fullpage #result .faculty-description {
+    margin-bottom: 30px; }
   #characters #result .btn,
   #fullpage #result .btn {
-    box-shadow: 0 0 10px -3px #777; }
+    box-shadow: 0 0 10px -3px #777;
+    border-radius: 30px;
+    font-size: 1em;
+    color: #5e5e5e;
+    background: #fff; }
+    #characters #result .btn:hover,
+    #fullpage #result .btn:hover {
+      background-color: #f2f2f2; }
   #characters #result .jurusan,
   #fullpage #result .jurusan {
     background: #f9f9f9;
@@ -714,6 +724,12 @@
   #top-menu .navbar-collapse.in a, #top-menu .navbar-collapse.collapsing a {
     padding-top: 15px;
     padding-bottom: 15px; }
+  #top-menu .navbar-toggle {
+    border: none;
+    margin-top: 20px;
+    margin-right: 10px; }
+    #top-menu .navbar-toggle:focus {
+      background: none !important; }
   #top-menu a {
     color: #22C6C7;
     text-transform: uppercase;
